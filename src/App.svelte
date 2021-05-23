@@ -1,9 +1,15 @@
 <script>
 	import Table from "./Table.svelte";
 	import Form from "./Form.svelte";
+	let id;
+	let name = "";
+	let price = 5;
+	function edit(event) {
+	  ({ id, name, price } = event.detail);
+	}
   </script>
-
-<style>
+  
+  <style>
 	main {
 	  flex: 1;
 	  align-content: center;
@@ -15,8 +21,8 @@
   
   <main>
 	<h1>Project Estimator</h1>
-	<Form />
+	<Form bind:price bind:id bind:name />
   
-	<Table />
+	<Table on:edit={edit} />
   
   </main>
